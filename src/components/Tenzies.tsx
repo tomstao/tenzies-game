@@ -14,15 +14,18 @@ interface Die {
 
 export default function Tenzies() {
     const random = () => Math.floor(Math.random() * 6 + 1)
-    const [diceValues, setDiceValues] = React.useState<Die[]>(
-        Array.from({length: 10}, () => ({
-                value: random(),
-                isLocked: false,
-            }
-        ))
-    );
 
-    const [win, setWin] = React.useState(false);
+    const reset = (): Die[] =>
+        Array.from({ length: 10 }, () => ({
+            value: random(),
+            isLocked: false,
+        })); // This is responsible for seed numbers when start or reset
+
+
+    const [diceValues, setDiceValues] = React.useState<Die[]>(reset); // Dice state
+
+
+    const [win, setWin] = React.useState(false); // wining state
 
     const toggleLock = (index: number) => {
         setDiceValues(prev =>
@@ -30,7 +33,7 @@ export default function Tenzies() {
                 i === index ? {...die, isLocked: !die.isLocked} : die
             )
         );
-    };
+    }; // toggle function to lock the die when user clicks it.
 
     // const checkWin = () => diceValues.length > 0 && diceValues.every(
     //     (dice) => ( dice.value === diceValues[0].value )
@@ -43,11 +46,17 @@ export default function Tenzies() {
     //     }
     // }
 
-    const handleClick = () => {
-        setDiceValues(
-            prevState => prevState.map((die) => ({...die, value: die.isLocked ? die.value : random()})),
-        )
-    }
+    const handleRoll = () => {
+        if (!win)
+        {
+            setDiceValues(
+                prevState => prevState.map((die) => ({...die, value: die.isLocked ? die.value : random()})),
+            )
+        } else {
+            setDiceValues(reset)
+        }
+    } // roll the dice before winning, and reset it when user wins.
+
 
     React.useEffect(() => {
         if (
@@ -78,13 +87,13 @@ export default function Tenzies() {
 
             <div className={'flex justify-center align-items-center'}>
                 <button className={'text-5xl rounded-2xl bg-sky-600 p-2 hover:scale-105 text-blue-950 transition duration-300 ease-in-out'}
-                        onClick={handleClick}
+                        onClick={handleRoll}
                 >
-                    Roll
+                    {win ? "Reset" : "Roll"}
                 </button>
             </div>
             <div className="h-12 w-full text-center text-4xl text-green-600 mt-4">
-                {win && "You win"}
+                {win && "You win!"}
             </div>
 
         </>

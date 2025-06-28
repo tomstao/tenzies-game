@@ -1,6 +1,5 @@
 import './App.css'
 import Tenzies from "./components/Tenzies.tsx";
-
 function App() {
 
     return (
