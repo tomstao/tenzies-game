@@ -13,7 +13,7 @@ interface Die {
 }
 
 export default function Tenzies() {
-    const random = () => Math.floor(Math.random() * 6 + 1)
+    const random = (): number => Math.floor(Math.random() * 6 + 1)
 
     const reset = (): Die[] =>
         Array.from({ length: 10 }, () => ({
@@ -46,7 +46,7 @@ export default function Tenzies() {
     //     }
     // }
 
-    const handleRoll = () => {
+    const handleRoll = (): void => {
         if (!win)
         {
             setDiceValues(
@@ -105,7 +105,7 @@ const Grid: React.FC<GridProps> = ({className, children, onClick}) => {
     return (
         <button
             onClick={onClick}
-            className={`${className} text-center text-blue-950 rounded-2xl flex items-center justify-center text-5xl hover:shadow-black hover:shadow-sm transition duration-300 ease-in-out`
+            className={`${className} text-center text-blue-950 rounded-2xl flex items-center justify-center text-5xl hover:shadow-black hover:shadow-sm transition duration-300 ease-in-out border-amber-300 border-2`
             }>
             {children}
         </button>)
