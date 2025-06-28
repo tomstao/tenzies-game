@@ -61,7 +61,7 @@ export default function Tenzies() {
     React.useEffect(() => {
         if (
             diceValues.length > 0 &&
-            diceValues.every(die => die.value === diceValues[0].value)
+            diceValues.every(die => die.value === diceValues[0].value && die.isLocked)
         ) {
             setWin(true);
         } else {
