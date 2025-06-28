@@ -88,7 +88,7 @@ export default function Tenzies() {
             </div>
 
             <div className={'flex justify-center align-items-center'}>
-                <button className={'text-5xl rounded-2xl bg-sky-600 px-3 py-1 hover:scale-105 text-blue-950 transition duration-300 ease-in-out'}
+                <button className={'text-5xl rounded-2xl bg-sky-600 px-3 py-1 hover:scale-105 text-blue-950 transition duration-300 ease-in-out border-2 border-amber-300'}
                         onClick={handleRoll}
                         ref={buttonRef}
                 >
@@ -108,7 +108,7 @@ const Grid: React.FC<GridProps> = ({className, children, onClick}) => {
     return (
         <button
             onClick={onClick}
-            className={`${className} text-center text-blue-950 rounded-2xl flex items-center justify-center text-5xl hover:shadow-black hover:shadow-sm transition duration-300 ease-in-out border-amber-300 border-2`
+            className={`${className} text-center text-blue-950 rounded-2xl flex items-center justify-center text-5xl shadow-black shadow-sm transition duration-300 ease-in-out border-amber-300 border-2 hover:scale-105 `
             }>
             {children}
         </button>)
