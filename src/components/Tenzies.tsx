@@ -62,15 +62,22 @@ export default function Tenzies() {
 
     return (
         <>
-            <div className="grid grid-cols-5 grid-rows-2 gap-4 h-50 p-2">
-                {diceValues.map((die, i) => (
-                    <Grid key={i} className={die.isLocked ? `bg-amber-500` : `bg-sky-500`}
-                          onClick={() => toggleLock(i)}>{die.value}</Grid>
-                ))}
+            <div className="w-full max-w-[700px] mx-auto">
+                <div className="grid grid-cols-5 gap-4 p-2">
+                    {diceValues.map((die, i) => (
+                        <Grid
+                            key={i}
+                            className={`${die.isLocked ? "bg-amber-500" : "bg-sky-500"} aspect-square`}
+                            onClick={() => toggleLock(i)}
+                        >
+                            {die.value}
+                        </Grid>
+                    ))}
+                </div>
             </div>
 
             <div className={'flex justify-center align-items-center'}>
-                <button className={'text-5xl rounded-2xl bg-sky-600 p-2 hover:scale-105'}
+                <button className={'text-5xl rounded-2xl bg-sky-600 p-2 hover:scale-105 text-blue-950 transition duration-300 ease-in-out'}
                         onClick={handleClick}
                 >
                     Roll
@@ -89,7 +96,7 @@ const Grid: React.FC<GridProps> = ({className, children, onClick}) => {
     return (
         <button
             onClick={onClick}
-            className={`${className} text-center rounded-2xl flex items-center justify-center text-5xl hover:shadow-blue-500 hover:shadow-2xl`
+            className={`${className} text-center text-blue-950 rounded-2xl flex items-center justify-center text-5xl hover:shadow-black hover:shadow-sm transition duration-300 ease-in-out`
             }>
             {children}
         </button>)
