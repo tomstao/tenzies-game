@@ -64,7 +64,8 @@ export default function Tenzies() {
         <>
             <div className="grid grid-cols-5 grid-rows-2 gap-4 h-50 p-2">
                 {diceValues.map((die, i) => (
-                    <Grid key={i} className={die.isLocked ? `bg-amber-500` : `bg-sky-500`} onClick={()=> toggleLock(i) }>{die.value}</Grid>
+                    <Grid key={i} className={die.isLocked ? `bg-amber-500` : `bg-sky-500`}
+                          onClick={() => toggleLock(i)}>{die.value}</Grid>
                 ))}
             </div>
 
