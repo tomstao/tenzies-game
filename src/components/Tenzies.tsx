@@ -22,10 +22,10 @@ export default function Tenzies() {
         })); // This is responsible for seed numbers when start or reset
 
 
-    const [diceValues, setDiceValues] = React.useState<Die[]>(reset); // Dice state
+    const [diceValues, setDiceValues] = React.useState<Die[]>(() => reset()); // Dice state
 
 
-    const [win, setWin] = React.useState(false); // wining state
+    const [win, setWin] = React.useState(()=>false); // wining state
 
     const toggleLock = (index: number) => {
         setDiceValues(prev =>
