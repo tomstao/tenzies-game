@@ -1,4 +1,5 @@
 import * as React from "react";
+import {useRef} from "react";
 
 interface GridProps {
     className?: string; // optional background class or any class string
@@ -14,7 +15,7 @@ interface Die {
 
 export default function Tenzies() {
     const random = (): number => Math.floor(Math.random() * 6 + 1)
-
+    const buttonRef = useRef<HTMLButtonElement>(null);
     const reset = (): Die[] =>
         Array.from({ length: 10 }, () => ({
             value: random(),
@@ -64,6 +65,7 @@ export default function Tenzies() {
             diceValues.every(die => die.value === diceValues[0].value && die.isLocked)
         ) {
             setWin(true);
+            buttonRef.current?.focus();
         } else {
             setWin(false); // optional: resets win if they don't match anymore
         }
@@ -88,6 +90,7 @@ export default function Tenzies() {
             <div className={'flex justify-center align-items-center'}>
                 <button className={'text-5xl rounded-2xl bg-sky-600 px-3 py-1 hover:scale-105 text-blue-950 transition duration-300 ease-in-out'}
                         onClick={handleRoll}
+                        ref={buttonRef}
                 >
                     {win ? "Reset" : "Roll"}
                 </button>
