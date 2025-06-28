@@ -86,7 +86,7 @@ export default function Tenzies() {
             </div>
 
             <div className={'flex justify-center align-items-center'}>
-                <button className={'text-5xl rounded-2xl bg-sky-600 p-2 hover:scale-105 text-blue-950 transition duration-300 ease-in-out'}
+                <button className={'text-5xl rounded-2xl bg-sky-600 px-3 py-1 hover:scale-105 text-blue-950 transition duration-300 ease-in-out'}
                         onClick={handleRoll}
                 >
                     {win ? "Reset" : "Roll"}
